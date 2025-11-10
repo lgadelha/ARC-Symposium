@@ -4,25 +4,27 @@ title_short: 'Report: 2nd ARC Symposium'
 tags:
   - RDM
   - research data management
-  - FAIR Digital Object
+  - data publication
   - ARC
-  - unknown chemical substances
+  - Annotated research Context
+  - RO-Crate
+  - FAIR Digital Object
 authors:
   - name: Heinrich Lukas Weil
-    orcid:
-    affiliation:
+    orcid: 0000-0003-1945-6342
+    affiliation: 1
     role:
   - name: Kevin Schneider
-    orcid:
-    affiliation:
+    orcid: 0000-0002-2198-5262
+    affiliation: 1
     role:
   - name: Stella Eggels
     orcid: 0000-0001-9436-3109
-    affiliation: DataPLANT
+    affiliation: 1
     role: Writing – original draft
   - name: Sabrina Zander
     orcid: 0009-0000-4569-6126
-    affiliation: MibiNet
+    affiliation: 2
     role: Writing – original draft
 
 
@@ -33,11 +35,11 @@ authors:
     orcid: 0000-0000-0000-0000
     affiliation: 2
     role: Conceptualization, Writing – review & editing
+
 affiliations:
-  - name: First Affiliation
+  - name: DataPLANT
     index: 1
-  - name: ELIXIR Europe
-    ror: 044rwnt51
+  - name: MibiNet
     index: 2
 date: 8 November 2023
 cito-bibliography: paper.bib
@@ -62,6 +64,8 @@ This paper combines all project into a single report. Next year we might split t
 
 ## Project 1: ARC template repositories
 
+_Members: Sabrina Zander, Stella Eggels_
+
 ### Context
 
 Users that want to initiate a project following the ARC Scaffold structure can directly use ARC templates on the DataHUB.
@@ -70,10 +74,10 @@ Existing ARC templates were outdated in regards of the ARC specification and no 
 
 ### Consequences
 
-We updated the existing ARC template to the latest version of the ARC specification (at the point of writing VERSION XX) and created two examples of experiment-specific ARC templates (Genomics and Metabolomics).
+We updated the existing ARC template to the latest version of the ARC specification (at the point of writing [CITE ARC SPECS]) and created two examples of experiment-specific ARC templates (Genomics and Metabolomics).
 These additional experiment-specific ARC templates can provide a starting point for new ARC creators that provide suggestions for suitable studies, assays, and metadata templates in the ISA files, as well as a suggestion for a `README.md` structure.
 
-Template ARCs are currently stored in an arc_templates group on the DataHUB: https://git.nfdi4plants.org/arc_templates.
+Template ARCs are currently stored in an `arc_templates` group on the DataHUB: https://git.nfdi4plants.org/arc_templates.
 We discussed that in the future they should probably be moved to a dedicated repository (e.g., on GitHub), where one repository will be needed per ARC template.
 To not overload the nfdi4plants GitHub organization, an extra arc template organization might be the best solution if there is sufficient usage.
 Once the implementation is finalized, when creating a new project in the DataHUB the option "create from template" allows to select from the different ARC templates and initiate an ARC following their structure.
@@ -83,13 +87,32 @@ All GitLab default templates can most likely be deleted.
 
 ### Automation
 
-The amount of requests and usage of experiment-specific ARC templates should be monitored to decide when to move them to a dedicated repository. 
+The amount of requests and usage of experiment-specific ARC templates should be monitored to decide when to move them to a dedicated repository.
 
 ## Project 2: SQL-to-ARC
 
 ### Context
 
+In the NFDI FAIRagro [CITE FAIRAGRO] project we want to connect several Research Data Infrastructures (RDIs) with a common middleware that is
+ARC/Datahub-based [CITE PLANTDATAHUB]. The challenge is to convert the meta data offered by those RDIs to
+ARC.
+
+One idea to tackle that is to create an SQL-to-ARC converter that maps the SQL schema of existing RDIs to the ARC metadata model.
+
 ### Consequences
+
+We assume to have access to the RDI's SQL database. We create new views in that database
+that correspond to entities within the ARC context. E.g:
+
+* `ARC_investigation`
+* `ARC_study`
+* `ARC_assay`
+* `ARC_person`
+* `ARC_sample`
+* `ARC_sample_characteristic`
+
+Then we use an ARCtrl-based [CITE ARCTRL] software (written in python) to perform the actual conversion.
+The prototype can be found here: git@github.com:fairagro/m4.2_SQLToARC.git (currently private) [make repo public or include in this repo].
 
 ### Automation
 
