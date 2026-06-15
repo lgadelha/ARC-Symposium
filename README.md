@@ -1,7 +1,7 @@
 # Hands-On Symposium on ARC Communication and Interoperability 2026
 
-2nd Hands-On Symposium on ARC communication and interoperability
-June 15th to 217th, 2026
+3rd Hands-On Symposium on ARC communication and interoperability
+June 15th to 17th, 2026
 
 The symposium is an on-site, in presence event held at the Villa-Denis near Kaiserslautern. It will be held over three days.
 
