@@ -27,5 +27,3 @@ The [Cluster of Excellence GreenRobust](https://www.greenrobust.de) started its 
   - A few draft templates (plant sowing and ATAC-seq computational analysis) were written and added to the [SWATE template registry repository](https://github.com/nfdi4plants/swate-template-registry/tree/main/templates/community/GreenRobust).
   - Making one ARC using ARCtrl where the complete process is added and linked with ontologies for plant species was also attempted.
 
-
-![](CreateProjectfromARCTemplates.jpg)
